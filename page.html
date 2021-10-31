@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="UTF-8">
+        <title>Document</title>
+<script type="text/javascript">
+
+// alternative to onload
+document.onreadystatechange = function () {
+  if (document.readyState == "complete") {
+    dynamicWriting();
+  }
+}
+
+var employees =[{"lastname":"Grimard","firstname":"Catherine","phoneNumber":"03.21.39.60.34","email":"catherineGrimard@armyspy.com","address":{"street":"71, Rue St Ferréol","zipCode":57070,"city":"Metz"}},{"lastname":"Duperré","firstname":"Jean","phoneNumber":"05.34.60.16.90","email":"Jean.Duperre@jourrapide.com","address":{"street":"75, rue Jean Vilar","zipCode":24100,"city":"Bergerac"}},{"lastname":"Givry","firstname":"Denis","phoneNumber":"04.98.02.77.68","email":"DenisGivry@teleworm.us","address":{"street":"32, Avenue De Marlioz","zipCode":74100,"city":"Annemasse"}}];        
+
+console.log(employees);
+
+function dynamicWriting(){
+var nbEmployees=employees.length;
+
+var htmlTable=document.createElement('table');
+
+for(var i=0;i<nbEmployees;i++){
+
+var newRow=document.createElement('tr');
+var newCell=document.createElement('td');
+var textContent=document.createTextNode(employees[i].lastname);
+newCell.appendChild(textContent);
+newRow.appendChild(newCell);
+
+var newCell=document.createElement('td');
+var textContent=document.createTextNode(employees[i].firstname);
+newCell.appendChild(textContent);
+newRow.appendChild(newCell);
+
+var newCell=document.createElement('td');
+var textContent=document.createTextNode(employees[i].email);
+newCell.appendChild(textContent);
+newRow.appendChild(newCell);
+
+htmlTable.appendChild(newRow);
+
+}//end for
+
+document.getElementById('main').appendChild(htmlTable);
+}//end func        
+</script>
+<style>
+table {table-layout: auto;width: 800px;border:1px solid black;border-collapse: collapse;}        
+td {border:1px solid black;}
+</style>
+</head>
+<body>
+<section id="main"></section>        
+</body>
+</html>
