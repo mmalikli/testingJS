@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="UTF-8">
+        <title>Document</title>
+<script type="text/javascript">
+
+// alternative à load
+document.onreadystatechange = function () {
+  if (document.readyState == "complete") {
+    dynamicWriting();
+  }
+}
+
+employees =[{"lastname":"Grimard","firstname":"Catherine","phoneNumber":"03.21.39.60.34","email":"catherineGrimard@armyspy.com","address":{"street":"71, Rue St Ferréol","zipCode":57070,"city":"Metz"}},{"lastname":"Duperré","firstname":"Jean","phoneNumber":"05.34.60.16.90","email":"Jean.Duperre@jourrapide.com","address":{"street":"75, rue Jean Vilar","zipCode":24100,"city":"Bergerac"}},{"lastname":"Givry","firstname":"Denis","phoneNumber":"04.98.02.77.68","email":"DenisGivry@teleworm.us","address":{"street":"32, Avenue De Marlioz","zipCode":74100,"city":"Annemasse"}}];        
+
+console.log(employees);
+
+function dynamicWriting(){
+
+codeHTMLtable="<table>";
+
+employees.forEach(function(item){
+codeHTMLtable+="<tr>";
+codeHTMLtable+=`<td>${item.lastname}</td>`;
+codeHTMLtable+=`<td>${item.firstname}</td>`;
+codeHTMLtable+=`<td>${item.email}</td>`;
+codeHTMLtable+="</tr>";
+});
+
+codeHTMLtable=codeHTMLtable+"</table>";
+
+
+document.getElementById('main').insertAdjacentHTML('afterbegin',codeHTMLtable);
+
+}//end func        
+</script>
+<style>
+table {table-layout: auto;width: 800px;border:1px solid black;border-collapse: collapse;}        
+td {border:1px solid black;}
+</style>
+</head>
+<body>
+<section id="main"></section>        
+</body>
+</html>
